@@ -4,12 +4,11 @@ import jakarta.persistence.*;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
 @Table
-public class Event implements Serializable {
+public class Speaker implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
@@ -17,11 +16,11 @@ public class Event implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 100)
     private String name;
 
-    @Column
-    private LocalDateTime date;
+    @Column(nullable = false, length = 1000)
+    private String bio;
 
     public UUID getId() {
         return id;
@@ -39,11 +38,11 @@ public class Event implements Serializable {
         this.name = name;
     }
 
-    public LocalDateTime getDate() {
-        return date;
+    public String getBio() {
+        return bio;
     }
 
-    public void setDate(LocalDateTime date) {
-        this.date = date;
+    public void setBio(String bio) {
+        this.bio = bio;
     }
 }

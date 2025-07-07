@@ -9,7 +9,7 @@ import java.util.UUID;
 
 @Entity
 @Table
-public class Event implements Serializable {
+public class Location implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
@@ -17,11 +17,14 @@ public class Event implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 200)
     private String name;
 
-    @Column
-    private LocalDateTime date;
+    @Column(nullable = false, length = 400, unique = true)
+    private String address;
+
+    @Column(nullable = false)
+    private int capacity;
 
     public UUID getId() {
         return id;
@@ -39,11 +42,19 @@ public class Event implements Serializable {
         this.name = name;
     }
 
-    public LocalDateTime getDate() {
-        return date;
+    public String getAddress() {
+        return address;
     }
 
-    public void setDate(LocalDateTime date) {
-        this.date = date;
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
     }
 }
